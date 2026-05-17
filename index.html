@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch My Snacks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="resources/favicon.png">
+</head>
+<body>
+
+    <h1 id="game-title">Catch My Snacks!</h1>
+
+    <div class="details">
+        <div id="score">Score : 0</div>
+        <div id="hi-score">High Score : 0</div>
+        <div style="color: #8b0000;">Misses: <span id="misses">0</span>/10</div>
+        <button id="actions">Pause</button>
+    </div>
+
+    <div class="game-container">
+        
+        <div id="start-screen">
+            <h1>CLICK ANYWHERE TO START</h1>
+        </div>
+
+        <div id="rules-screen" style="display: none;">
+            <div class="rules-box">
+                <h2>The Mission</h2>
+                <p>Catch the snacks!</p>
+                <p>If you miss 10 total objects, you lose.</p>
+                <button id="ok-button">OK, LET'S GO!</button>
+            </div>
+        </div>
+
+        <div id="game-over" style="display: none;">
+            <h1>GAME OVER</h1>
+            <p id="final-score"></p>
+            <button onclick="location.reload()">TRY AGAIN</button>
+        </div>
+
+        <div id="bear"></div>
+
+    </div>
+
+    <div class="music-controls">
+        <label for="song-select">Music Selections</label>
+        <select id="song-select">
+            <option value="music/1miniCandy.mp3">Mini Candy</option>
+            <option value="music/2handTrolley.mp3">Hand Trolley</option>
+            <option value="music/3cloud.mp3">Cloud</option>
+        </select>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="music/1miniCandy.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
