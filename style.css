@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -111,6 +111,7 @@ body {
     background-position: center;
     bottom: 60px; 
     left: 50%;
+    transform: translateX(-50%);
 }
 
 #bear.walking {
@@ -153,6 +154,16 @@ body {
 
 #song-select:focus {
     outline: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .details, .game-container {
+        width: 95vw;
+        max-width: 95%;
+    }
+    .music-controls {
+        left: 20px;
+    }
 }
 
 @media only screen and (max-width: 370px) {
