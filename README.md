@@ -31,10 +31,6 @@ The rules are simple, but the pace picks up quickly:
 *   *Note: Dropping or missing a snail does not count against your total misses.*
 
 ---
-## Live Demo
-
-
----
 
 ## 🛠️ File Structure
 
