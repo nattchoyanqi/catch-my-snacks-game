@@ -19,7 +19,8 @@ let score = 0;
 let gameMode = "pause"; 
 let continuousMisses = 0;
 let lastX = 0;
-let movementTimeout; 
+let movementTimeout;
+let keyPressed = {};
 
 // Load and display High Score from local browser storage
 let highScore = localStorage.getItem("highScore") || 0;
@@ -108,23 +109,57 @@ function handleMove(clientX) {
     lastX = clientX;
 }
 
-// Desktop Support
+function handleKeyboardMove() {
+    if (gameMode === 'pause') return;
+    
+    let rect = gamecontainer.getBoundingClientRect();
+    let bearPosition = parseInt(bearElement.style.left) || (gamecontainer.clientWidth / 2 - bearElement.offsetWidth / 2);
+    
+    const moveSpeed = 15;
+    
+    if (keyPressed['ArrowLeft']) {
+        bearPosition -= moveSpeed;
+        bearElement.style.transform = 'scaleX(1)'; // Look Left
+    }
+    if (keyPressed['ArrowRight']) {
+        bearPosition += moveSpeed;
+        bearElement.style.transform = 'scaleX(-1)'; // Look Right
+    }
+    
+    if (bearPosition >= 0 && bearPosition <= gamecontainer.clientWidth - bearElement.offsetWidth) {
+        bearElement.style.left = bearPosition + 'px';
+    }
+    
+    if (keyPressed['ArrowLeft'] || keyPressed['ArrowRight']) {
+        bearElement.classList.add('walking');
+        clearTimeout(movementTimeout);
+        movementTimeout = setTimeout(() => {
+            bearElement.classList.remove('walking');
+        }, 150);
+    }
+}
+
+// Desktop Support - Mouse
 document.addEventListener('mousemove', (e) => {
     handleMove(e.clientX);
 });
 
-// Touchscreen Support (iPads and Smartphones)
-document.addEventListener('touchmove', (e) => {
-    if(e.touches.length > 0) {
-        handleMove(e.touches[0].clientX);
+// Keyboard Support - Left/Right Arrow Keys
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        keyPressed[e.key] = true;
     }
-}, { passive: true });
+});
 
-document.addEventListener('touchstart', (e) => {
-    if(e.touches.length > 0) {
-        handleMove(e.touches[0].clientX);
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        keyPressed[e.key] = false;
+        bearElement.classList.remove('walking');
     }
-}, { passive: true });
+});
+
+// Continuous keyboard movement
+setInterval(handleKeyboardMove, 20);
 
 
 // --- PHASE 3: GAME CORE ENGINE ---
