@@ -9,8 +9,7 @@ A retro-style, pixel-art arcade game built using vanilla HTML5, CSS3, and JavaSc
 *   **Retro Aesthetic:** Styled with the classic `Press Start 2P` pixel font and custom GIF character animations.
 *   **Fully Responsive Canvas:** The game uses dynamic aspect-ratio scaling to shrink or grow perfectly depending on the user's screen size.
 *   **Cross-Platform Controls:** 
-    *   *Desktop:* Use your mouse cursor to track and glide the bear across the screen.
-    *   *Mobile/Tablet:* Drag your finger or tap anywhere inside the canvas context to move the bear instantly.
+    *   *Desktop:* Use your mouse cursor to track and glide the bear across the screen / Use the keyboard left and right arrows to move the bear. 
 *   **Dynamic Difficulty:** Falling items automatically speed up as your score passes milestone markers ($50+$ and $100+$ points).
 *   **High Score Memory:** Uses the browser's `localStorage` API to save your personal high score locally, even if you refresh or close the tab.
 *   **Built-in Jukebox:** A custom audio selection tool that allows players to switch backing music tracks mid-game.
