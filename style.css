@@ -128,7 +128,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    left: 150px;          /* Distance from left browser window edge */
+    left: 100px;          /* Distance from left browser window edge */
     top: 50%;            
     transform: translateY(-50%);
     gap: 12px;           
